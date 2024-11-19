@@ -1,15 +1,15 @@
-README
+# README
 
-To REQUEST data from the microservice, have the data in a JSON-formatted list of song titles. Then 
+To **REQUEST** data from the microservice, have the data in a JSON-formatted list of song titles.  
 
-REQUEST Details:
-Method: POST
-URL: http://localhost:8081/
-Content-Type: application/json
-Request Body: JSON array of song titles in alphabetical groups.
+**REQUEST Details**:  
+Method: POST  
+URL: http://localhost:8081/  
+Content-Type: application/json  
+Request Body: JSON array of song titles in alphabetical groups.  
 
-REQUEST Example:
-
+## **REQUEST Example**  
+```
 [
   "NewJeans",
   "For Whom The Bell Tolls",
@@ -17,11 +17,11 @@ REQUEST Example:
   "Breakin' Dishes",
   "Bad Guy"
 ]
+```
+The **RESPONSE** from the microservice will be a JSON object that outputs the song titles grouped in alphabetical groups, in alphabetical order.  
 
-The RESPONSE from the microservice will be a JSON object that outputs the song titles grouped in alphabetical groups, in alphabetical order.
-
-RESPONSE Example:
-
+## **RESPONSE Example**:
+```
 {
   "Alphabetical Groups:": {
     "Starts with 'B'": [
@@ -39,6 +39,6 @@ RESPONSE Example:
     ]
   }
 }
-
-UML Diagram:
+```
+## **UML Diagram**:
 ![Main Program](https://github.com/user-attachments/assets/3cdee321-d03f-4501-9c5d-1d01dfb6d034)
