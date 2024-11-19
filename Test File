@@ -1,0 +1,48 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Net;
+using Newtonsoft.Json;
+using System.IO;
+using System.Linq.Expressions;
+
+namespace MicroserviceATester
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            var songTitles = new List<string>
+            {
+                "NewJeans", "For Whom The Bells Tolls", "West Coast", "Breakin' Dishes", "Bad Guy"
+            };
+            var json = JsonConvert.SerializeObject(songTitles);
+
+            var request = (HttpWebRequest)WebRequest.Create("http://localhost:8081/");
+            request.Method = "POST";
+            request.ContentType = "application/json";
+
+            using (var streamWriter = new StreamWriter(request.GetRequestStream()))
+            {
+                streamWriter.Write(json);
+            }
+
+            try
+            {
+                var response = (HttpWebResponse)request.GetResponse();
+                using (var streamReader = new StreamReader(response.GetResponseStream()))
+                {
+                    var result = streamReader.ReadToEnd();
+                    Console.WriteLine(result);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            }
+        }
+    }
+
